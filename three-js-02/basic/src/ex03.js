@@ -12,8 +12,8 @@ export default function example2() {
   // 하지만 2배율을 초과하게 대응하면 성능상 손해가 크기 때문에 2배율로 많이쓴다고 함
   renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
 
-  // 초기 설정 이후에 투명도를 수정
-  renderer.setClearAlpha(0.5);
+  // 초기 설정 이후에 backgroundColor를 설정
+  renderer.setClearColor(0x00ff00);
 
   const scene = new THREE.Scene();
 
