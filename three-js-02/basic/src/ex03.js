@@ -16,6 +16,7 @@ export default function example2() {
   renderer.setClearColor(0x00ff00);
 
   const scene = new THREE.Scene();
+  scene.background = new THREE.Color('blue');
 
   const ASPECT = window.innerWidth / window.innerHeight;
 
