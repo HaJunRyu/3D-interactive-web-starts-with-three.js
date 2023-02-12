@@ -38,16 +38,38 @@ export default function example() {
     color: 'orangered',
     side: THREE.DoubleSide,
     flatShading: true,
+    // wireframe: true,
   });
 
   const mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
 
+  const positionArray = geometry.attributes.position.array;
+  const randomArray = [];
+  for (let i = 0; i < positionArray.length; i += 3) {
+    // 정점(Vertex) 한 개의 x, y, z 좌표를 랜덤으로 조정
+    positionArray[i] += (Math.random() - 0.5) * 0.2;
+    positionArray[i + 1] += (Math.random() - 0.5) * 0.2;
+    positionArray[i + 2] += (Math.random() - 0.5) * 0.2;
+
+    randomArray[i] = (Math.random() - 0.5) * 0.2;
+    randomArray[i + 1] = (Math.random() - 0.5) * 0.2;
+    randomArray[i + 2] = (Math.random() - 0.5) * 0.2;
+  }
+
   // 그리기
   const clock = new THREE.Clock();
 
   function draw() {
-    const delta = clock.getDelta();
+    const elapsedTime = clock.getElapsedTime() * 3;
+
+    for (let i = 0; i < positionArray.length; i += 3) {
+      positionArray[i] += Math.sin(elapsedTime + randomArray[i] * 100) * 0.001;
+      positionArray[i + 1] += Math.sin(elapsedTime + randomArray[i + 1] * 100) * 0.001;
+      positionArray[i + 2] += Math.sin(elapsedTime + randomArray[i + 2] * 100) * 0.001;
+    }
+
+    geometry.attributes.position.needsUpdate = true;
 
     renderer.render(scene, camera);
     renderer.setAnimationLoop(draw);
