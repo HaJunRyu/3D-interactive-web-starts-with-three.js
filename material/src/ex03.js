@@ -42,12 +42,14 @@ export default function example() {
   const material1 = new THREE.MeshPhongMaterial({
     color: 'orangered',
     shininess: 1000, // 반사광의 정도를 조절
+    flatShading: true,
   });
   // 하이라이트, 반사광이 표현 가능한 재질
   const material2 = new THREE.MeshStandardMaterial({
     color: 'orangered',
     roughness: 0.2, // 거칠기의 정도를 조절
     metalness: 0.5, // 금속 재질의 느낌을 수치로 조절
+    flatShading: true,
   });
   const mesh1 = new THREE.Mesh(geometry, material1);
   const mesh2 = new THREE.Mesh(geometry, material2);
