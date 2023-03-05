@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 // ----- 주제: EnvironmentMap
+// https://polyhaven.com/ - 무료 texture image download
+// https://matheowis.github.io/HDRI-to-CubeMap/ - hdri 파일을 일반 이미지로 쪼개줌
 
 export default function example() {
   const cubeTextureLoader = new THREE.CubeTextureLoader();
